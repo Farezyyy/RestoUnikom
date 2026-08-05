@@ -1,0 +1,36 @@
+@import "tailwindcss";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+
+@theme {
+  --color-primary: #9A3B3B;
+  --color-secondary: #C08261;
+  --color-accent: #E2C799;
+  --color-cream: #F2ECBE;
+  --color-dark: #1a1515;
+  --font-serif: 'Playfair Display', 'Instrument Serif', Georgia, serif;
+  --font-display: 'Instrument Serif', 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/20 backdrop-blur-md border border-white/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)];
+  }
+  
+  .glass-dark {
+    @apply bg-black/40 backdrop-blur-md border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)];
+  }
+  
+  .glass-cream {
+    @apply bg-[#F2ECBE]/40 backdrop-blur-md border border-white/40 shadow-lg;
+  }
+}
+
+body {
+  @apply bg-cream text-dark font-sans antialiased min-h-screen;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply text-primary font-medium tracking-tight;
+}

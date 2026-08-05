@@ -1,0 +1,53 @@
+{
+  "ingredients": [
+    { "id": "I1", "name": "Wagyu A5 Striploin", "category": "Meat", "stock": 15, "minStock": 10, "unit": "portions" },
+    { "id": "I2", "name": "Black Angus Ribeye", "category": "Meat", "stock": 5, "minStock": 20, "unit": "portions" },
+    { "id": "I3", "name": "Hokkaido Scallops", "category": "Seafood", "stock": 8, "minStock": 20, "unit": "pcs" },
+    { "id": "I4", "name": "Truffle Butter", "category": "Dairy", "stock": 0, "minStock": 200, "unit": "g" },
+    { "id": "I5", "name": "Saffron Threads", "category": "Spices", "stock": 12, "minStock": 10, "unit": "g" },
+    { "id": "I6", "name": "Matcha Powder", "category": "Drink Ingredients", "stock": 50, "minStock": 100, "unit": "g" },
+    { "id": "I7", "name": "Sparkling Water", "category": "Drink Ingredients", "stock": 20, "minStock": 50, "unit": "btl" }
+  ],
+  "menu": [
+    { 
+      "id": "M1", 
+      "name": "Wagyu Beef Tenderloin", 
+      "category": "Main Course", 
+      "price": 450000, 
+      "active": true,
+      "requires": ["I1", "I4"]
+    },
+    { 
+      "id": "M2", 
+      "name": "Scallop Carpaccio", 
+      "category": "Appetizer", 
+      "price": 180000, 
+      "active": true,
+      "requires": ["I3"]
+    },
+    { 
+      "id": "M3", 
+      "name": "Matcha Latte", 
+      "category": "Beverage", 
+      "price": 45000, 
+      "active": true,
+      "requires": ["I6"]
+    },
+    { 
+      "id": "M4", 
+      "name": "Truffle Arancini", 
+      "category": "Appetizer", 
+      "price": 120000, 
+      "active": true,
+      "requires": ["I4", "I5"]
+    },
+    { 
+      "id": "M5", 
+      "name": "San Pellegrino", 
+      "category": "Beverage", 
+      "price": 85000, 
+      "active": true,
+      "requires": ["I7"]
+    }
+  ]
+}

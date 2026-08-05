@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Admin Kasir",
+    "email": "admin@resto.com",
+    "password": "password123",
+    "role": "admin"
+  },
+  {
+    "id": 2,
+    "name": "Budi Pelayan",
+    "email": "waiter@resto.com",
+    "password": "password123",
+    "role": "waiter"
+  },
+  {
+    "id": 3,
+    "name": "Chef Juna",
+    "email": "chef@resto.com",
+    "password": "password123",
+    "role": "chef"
+  }
+]
