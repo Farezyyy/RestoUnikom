@@ -1,16 +1,22 @@
-# React + Vite
+# Resto Unikom Client (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Client frontend aplikasi **Resto Unikom Fine Dining Management System** dibangun menggunakan **React 19**, **Vite**, dan **TailwindCSS**.
 
-Currently, two official plugins are available:
+## 🚀 Panduan Jalankan Frontend secara Lokal
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+# 1. Install dependencies
+npm install
 
-## React Compiler
+# 2. Buat file .env berdasarkan .env.example
+cp .env.example .env
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# 3. Isi variabel di .env:
+# VITE_SUPABASE_URL=https://your-project.supabase.co
+# VITE_SUPABASE_ANON_KEY=your-anon-key
 
-## Expanding the ESLint configuration
+# 4. Jalankan aplikasi dev server
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Aplikasi frontend akan aktif di `http://localhost:5173`.
