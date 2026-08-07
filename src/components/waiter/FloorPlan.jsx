@@ -1,11 +1,11 @@
 import React from 'react';
 
 const statusColors = {
-  'available': 'bg-amber-100 border-amber-400 text-amber-900 shadow-[0_0_10px_rgba(251,191,36,0.4)] hover:bg-amber-200',
-  'occupied': 'bg-red-100 border-red-500 text-red-900 shadow-[0_0_10px_rgba(239,68,68,0.4)] hover:bg-red-200',
-  'reserved': 'bg-blue-100 border-blue-500 text-blue-900 shadow-[0_0_10px_rgba(59,130,246,0.4)] hover:bg-blue-200',
-  'needs-clearing': 'bg-orange-100 border-orange-400 text-orange-800 shadow-[0_0_10px_rgba(251,146,60,0.4)]',
-  'disabled': 'bg-gray-200 border-gray-400 text-gray-500 opacity-50 cursor-not-allowed',
+  'available': 'bg-amber-100 dark:bg-amber-900/40 border-amber-400 dark:border-amber-600 text-amber-900 dark:text-amber-300 shadow-[0_0_10px_rgba(251,191,36,0.4)] hover:bg-amber-200 dark:hover:bg-amber-900/60',
+  'occupied': 'bg-red-100 dark:bg-red-900/40 border-red-500 dark:border-red-600 text-red-900 dark:text-red-300 shadow-[0_0_10px_rgba(239,68,68,0.4)] hover:bg-red-200 dark:hover:bg-red-900/60',
+  'reserved': 'bg-blue-100 dark:bg-blue-900/40 border-blue-500 dark:border-blue-600 text-blue-900 dark:text-blue-300 shadow-[0_0_10px_rgba(59,130,246,0.4)] hover:bg-blue-200 dark:hover:bg-blue-900/60',
+  'needs-clearing': 'bg-orange-100 dark:bg-orange-900/40 border-orange-400 dark:border-orange-600 text-orange-800 dark:text-orange-300 shadow-[0_0_10px_rgba(251,146,60,0.4)]',
+  'disabled': 'bg-gray-200 dark:bg-gray-700 border-gray-400 dark:border-gray-600 text-gray-500 dark:text-gray-400 opacity-50 cursor-not-allowed',
 };
 
 export const statusIndicators = {
@@ -42,7 +42,7 @@ export default function FloorPlan({ tables, onSelectTable }) {
   };
 
   return (
-    <div className="relative w-[800px] h-[600px] bg-slate-50 border-4 border-slate-300 rounded-sm shadow-inner shrink-0 overflow-hidden">
+    <div className="relative w-[800px] h-[600px] bg-slate-50 dark:bg-slate-800 border-4 border-slate-300 dark:border-slate-600 rounded-sm shadow-inner shrink-0 overflow-hidden">
       
       {/* SVG Walls overlay */}
       <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 800 600">

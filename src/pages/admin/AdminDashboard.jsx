@@ -101,7 +101,7 @@ export default function AdminDashboard() {
     }
   };
 
-  if (loading) return <div className="p-8 text-center text-gray-500">Loading Session Maestro...</div>;
+  if (loading) return <div className="p-8 text-center text-gray-500 dark:text-gray-400">Loading Session Maestro...</div>;
 
   // Determine if Admin can advance (HARD GATE validation)
   let canAdvance = false;
@@ -115,7 +115,7 @@ export default function AdminDashboard() {
       canAdvance = true; // Can end session
     } else if (COURSES.includes(currentPhase)) {
       if (orders.length === 0) {
-        canAdvance = true; 
+        canAdvance = true;
       } else {
         let allServed = true;
         for (const o of orders) {
@@ -140,17 +140,17 @@ export default function AdminDashboard() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-serif text-gray-800">Session Controller (Maestro)</h2>
-        <p className="text-sm text-gray-500 mt-1">Central gating for the Fine Dining experience</p>
+        <h2 className="text-2xl font-serif text-gray-800 dark:text-gray-100">Session Controller (Maestro)</h2>
+        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Central gating for the Fine Dining experience</p>
       </div>
 
       {!activeJadwal ? (
-        <div className="bg-orange-50 text-orange-800 p-6 rounded-xl border border-orange-100 flex items-center">
+        <div className="bg-orange-50 dark:bg-orange-900/40 text-orange-800 dark:text-orange-400 p-6 rounded-xl border border-orange-100 dark:border-orange-800 flex items-center">
           <CalendarCheck className="w-6 h-6 mr-3" />
           <p className="font-medium">No Active Schedule for Today. Please activate a schedule in the settings.</p>
         </div>
       ) : (
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+        <div className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden">
           {/* Top Banner */}
           <div className="bg-gray-900 p-6 text-white flex justify-between items-center">
             <div>
@@ -160,12 +160,12 @@ export default function AdminDashboard() {
             </div>
             <div className="text-right">
               <div className="text-gray-400 text-sm font-medium uppercase tracking-wider mb-1">Current Phase</div>
-              <div className="text-3xl font-serif text-primary animate-pulse">{currentPhase.replace('_', ' ')}</div>
+              <div className="text-3xl font-serif text-primary dark:text-accent animate-pulse">{currentPhase.replace('_', ' ')}</div>
             </div>
           </div>
 
           {/* Master Control */}
-          <div className="p-8 bg-gray-50 flex flex-col items-center justify-center border-b border-gray-100">
+          <div className="p-8 bg-gray-50 dark:bg-gray-800/50 flex flex-col items-center justify-center border-b border-gray-100 dark:border-gray-800">
             <button
               onClick={handleNextPhase}
               disabled={!canAdvance || currentPhase === 'ENDED'}
@@ -177,7 +177,7 @@ export default function AdminDashboard() {
               </span>
             </button>
             {!canAdvance && currentPhase !== 'ENDED' && (
-              <p className="mt-4 text-sm font-medium text-red-500 flex items-center">
+              <p className="mt-4 text-sm font-medium text-red-500 dark:text-red-400 flex items-center">
                 <Clock className="w-4 h-4 mr-2" />
                 Hard Gated: {gatingReason}
               </p>
@@ -186,7 +186,7 @@ export default function AdminDashboard() {
 
           {/* Active Tables Status */}
           <div className="p-6">
-            <h4 className="font-bold text-gray-800 mb-4 flex items-center">
+            <h4 className="font-bold text-gray-800 dark:text-gray-100 mb-4 flex items-center">
               <CheckCircle2 className="w-5 h-5 mr-2 text-green-500" />
               Table Readiness Check
             </h4>
@@ -199,23 +199,23 @@ export default function AdminDashboard() {
                 const pilihanMenu = order.reservasi?.pilihan_menu || 'Set Menu A';
 
                 return (
-                  <div key={order.id} className="p-4 rounded-xl border border-gray-100 bg-white shadow-sm flex flex-col space-y-3">
-                    <div className="font-bold text-gray-800 border-b pb-2 flex justify-between">
+                  <div key={order.id} className="p-4 rounded-xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm flex flex-col space-y-3">
+                    <div className="font-bold text-gray-800 dark:text-gray-100 border-b dark:border-gray-800 pb-2 flex justify-between">
                       <span>Table {noMeja}</span>
                       <span className="text-xs font-mono text-gray-400">Ord #{order.id}</span>
                     </div>
-                    
-                    <div className="space-y-1.5 text-xs bg-gray-50 p-2.5 rounded-lg border border-gray-100">
-                      <p className="font-bold text-gray-900 text-sm flex items-center">
-                        <User className="w-3.5 h-3.5 mr-1.5 text-primary" />
+
+                    <div className="space-y-1.5 text-xs bg-gray-50 dark:bg-gray-800/50 p-2.5 rounded-lg border border-gray-100 dark:border-gray-800">
+                      <p className="font-bold text-gray-900 dark:text-gray-100 text-sm flex items-center">
+                        <User className="w-3.5 h-3.5 mr-1.5 text-primary dark:text-accent" />
                         {customerNama}
                       </p>
-                      <div className="flex justify-between items-center text-gray-600 font-semibold pt-1 border-t border-gray-200/60">
+                      <div className="flex justify-between items-center text-gray-600 dark:text-gray-300 font-semibold pt-1 border-t border-gray-200/60 dark:border-gray-700/60">
                         <span className="flex items-center">
-                          <Users className="w-3.5 h-3.5 mr-1 text-gray-500" />
-                          Total Guests: <strong className="text-gray-900 ml-1">{totalGuests} Pax</strong>
+                          <Users className="w-3.5 h-3.5 mr-1 text-gray-500 dark:text-gray-400" />
+                          Total Guests: <strong className="text-gray-900 dark:text-gray-100 ml-1">{totalGuests} Pax</strong>
                         </span>
-                        <span className="bg-primary/10 text-primary px-2 py-0.5 rounded font-bold flex items-center">
+                        <span className="bg-primary/10 dark:bg-accent/10 text-primary dark:text-accent px-2 py-0.5 rounded font-bold flex items-center">
                           <Utensils className="w-3 h-3 mr-1" />
                           {pilihanMenu}
                         </span>
@@ -223,14 +223,14 @@ export default function AdminDashboard() {
                     </div>
 
                     {currentPhase === 'PRE_SESSION' ? (
-                      <div className="text-xs text-gray-500 italic bg-blue-50 p-2 rounded text-center">Waiting for Admin to start...</div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400 italic bg-blue-50 dark:bg-blue-900/40 p-2 rounded text-center">Waiting for Admin to start...</div>
                     ) : (
                       <div className="flex justify-between items-center text-xs pt-1">
-                        <span className="text-gray-500 font-medium">Course Status</span>
+                        <span className="text-gray-500 dark:text-gray-400 font-medium">Course Status</span>
                         <span className={`px-2.5 py-1 rounded-md text-xs font-extrabold uppercase tracking-wider ${
-                          course?.status === 'DISAJIKAN' ? 'bg-green-100 text-green-800 border border-green-200' 
-                          : course?.status === 'SIAP' ? 'bg-blue-100 text-blue-800 border border-blue-200' 
-                          : 'bg-orange-100 text-orange-800 border border-orange-200'
+                          course?.status === 'DISAJIKAN' ? 'bg-green-100 text-green-800 border border-green-200 dark:bg-green-900/40 dark:text-green-400 dark:border-green-800'
+                          : course?.status === 'SIAP' ? 'bg-blue-100 text-blue-800 border border-blue-200 dark:bg-blue-900/40 dark:text-blue-400 dark:border-blue-800'
+                          : 'bg-orange-100 text-orange-800 border border-orange-200 dark:bg-orange-900/40 dark:text-orange-400 dark:border-orange-800'
                         }`}>
                           {course?.status || 'MENUNGGU'}
                         </span>

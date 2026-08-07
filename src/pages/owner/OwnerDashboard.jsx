@@ -237,60 +237,60 @@ export default function OwnerDashboard() {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col h-[calc(100vh-8rem)] overflow-hidden">
-      
+    <div className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col h-[calc(100vh-8rem)] overflow-hidden">
+
       {/* Tabs */}
-      <div className="flex border-b border-gray-200 overflow-x-auto">
-        <button 
+      <div className="flex border-b border-gray-200 dark:border-gray-800 overflow-x-auto">
+        <button
           onClick={() => setActiveTab('floor')}
-          className={`px-6 py-4 text-center font-medium transition-colors flex items-center justify-center gap-2 whitespace-nowrap ${activeTab === 'floor' ? 'bg-primary/5 text-primary border-b-2 border-primary' : 'text-gray-500 hover:bg-gray-50'}`}
+          className={`px-6 py-4 text-center font-medium transition-colors flex items-center justify-center gap-2 whitespace-nowrap ${activeTab === 'floor' ? 'bg-primary/5 text-primary dark:text-accent border-b-2 border-primary' : 'text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800/50'}`}
         >
           <Grid className="w-5 h-5" /> Floor Plan Control
         </button>
-        <button 
+        <button
           onClick={() => setActiveTab('workers')}
-          className={`px-6 py-4 text-center font-medium transition-colors flex items-center justify-center gap-2 whitespace-nowrap ${activeTab === 'workers' ? 'bg-primary/5 text-primary border-b-2 border-primary' : 'text-gray-500 hover:bg-gray-50'}`}
+          className={`px-6 py-4 text-center font-medium transition-colors flex items-center justify-center gap-2 whitespace-nowrap ${activeTab === 'workers' ? 'bg-primary/5 text-primary dark:text-accent border-b-2 border-primary' : 'text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800/50'}`}
         >
           <Users className="w-5 h-5" /> Worker Management
         </button>
-        <button 
+        <button
           onClick={() => setActiveTab('cms')}
-          className={`px-6 py-4 text-center font-medium transition-colors flex items-center justify-center gap-2 whitespace-nowrap ${activeTab === 'cms' ? 'bg-red-50 text-red-600 border-b-2 border-red-600' : 'text-gray-500 hover:bg-gray-50'}`}
+          className={`px-6 py-4 text-center font-medium transition-colors flex items-center justify-center gap-2 whitespace-nowrap ${activeTab === 'cms' ? 'bg-red-50 dark:bg-red-900/40 text-red-600 dark:text-red-400 border-b-2 border-red-600' : 'text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800/50'}`}
         >
           <ShieldAlert className="w-5 h-5" /> Database CMS (Override)
         </button>
       </div>
 
-      <div className="flex-1 overflow-auto bg-gray-50/30">
+      <div className="flex-1 overflow-auto bg-gray-50/30 dark:bg-gray-950">
         
         {/* FLOOR PLAN TAB */}
         {activeTab === 'floor' && (
           <div className="flex flex-col lg:flex-row h-full">
-            <div className="flex-1 p-4 bg-gray-100 overflow-auto flex items-center justify-center border-r border-gray-200 relative">
+            <div className="flex-1 p-4 bg-gray-100 dark:bg-gray-800 overflow-auto flex items-center justify-center border-r border-gray-200 dark:border-gray-800 relative">
               <FloorPlan tables={tables} onSelectTable={setSelectedTable} />
             </div>
-            <div className="w-full lg:w-80 bg-white p-6 flex flex-col">
-              <h3 className="text-lg font-bold text-gray-800 mb-6">Table Control</h3>
+            <div className="w-full lg:w-80 bg-white dark:bg-gray-900 p-6 flex flex-col">
+              <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-6">Table Control</h3>
               {selectedTable ? (
                 <div className="space-y-6">
                   <div>
-                    <h4 className="text-3xl font-bold text-gray-900">{selectedTable.label}</h4>
-                    <p className="text-sm text-gray-500 capitalize flex items-center gap-2">
-                       <span className={`w-2 h-2 rounded-full ${statusIndicators[selectedTable.status]}`}></span> 
+                    <h4 className="text-3xl font-bold text-gray-900 dark:text-gray-100">{selectedTable.label}</h4>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 capitalize flex items-center gap-2">
+                       <span className={`w-2 h-2 rounded-full ${statusIndicators[selectedTable.status]}`}></span>
                        {selectedTable.status} (DB: {selectedTable.dbStatus})
                     </p>
                   </div>
                   <div className="space-y-2">
-                     <p className="text-xs font-bold text-gray-400 uppercase tracking-wider">Change Status</p>
+                     <p className="text-xs font-bold text-gray-400 dark:text-gray-400 uppercase tracking-wider">Change Status</p>
                      <div className="grid grid-cols-2 gap-2">
-                       <button onClick={() => handleTableStatusChange('KOSONG')} className="p-2 border rounded hover:bg-green-50 text-green-700 font-medium text-sm">Available</button>
-                       <button onClick={() => handleTableStatusChange('TERISI')} className="p-2 border rounded hover:bg-red-50 text-red-700 font-medium text-sm">Occupied</button>
-                       <button onClick={() => handleTableStatusChange('RESERVASI')} className="p-2 border rounded hover:bg-blue-50 text-blue-700 font-medium text-sm">Reserved</button>
-                       <button onClick={() => handleTableStatusChange('NONAKTIF')} className="p-2 border rounded hover:bg-gray-100 text-gray-700 font-medium text-sm">Disable Table</button>
+                       <button onClick={() => handleTableStatusChange('KOSONG')} className="p-2 border border-gray-300 dark:border-gray-700 rounded hover:bg-green-50 dark:hover:bg-green-900/40 text-green-700 dark:text-green-400 font-medium text-sm">Available</button>
+                       <button onClick={() => handleTableStatusChange('TERISI')} className="p-2 border border-gray-300 dark:border-gray-700 rounded hover:bg-red-50 dark:hover:bg-red-900/40 text-red-700 dark:text-red-400 font-medium text-sm">Occupied</button>
+                       <button onClick={() => handleTableStatusChange('RESERVASI')} className="p-2 border border-gray-300 dark:border-gray-700 rounded hover:bg-blue-50 dark:hover:bg-blue-900/40 text-blue-700 dark:text-blue-400 font-medium text-sm">Reserved</button>
+                       <button onClick={() => handleTableStatusChange('NONAKTIF')} className="p-2 border border-gray-300 dark:border-gray-700 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium text-sm">Disable Table</button>
                      </div>
                   </div>
-                  <div className="pt-4 border-t border-gray-100">
-                    <button 
+                  <div className="pt-4 border-t border-gray-100 dark:border-gray-800">
+                    <button
                       onClick={async () => {
                         const guest = window.prompt("Enter Guest Name for Manual Reservation:");
                         if(guest && selectedTable) {
@@ -306,7 +306,7 @@ export default function OwnerDashboard() {
                   </div>
                 </div>
               ) : (
-                <div className="text-center text-gray-400 mt-10">Select a table to control it.</div>
+                <div className="text-center text-gray-400 dark:text-gray-400 mt-10">Select a table to control it.</div>
               )}
             </div>
           </div>
@@ -315,24 +315,24 @@ export default function OwnerDashboard() {
         {/* WORKER MANAGEMENT TAB */}
         {activeTab === 'workers' && (
           <div className="p-6 space-y-6">
-            <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
-              <h3 className="text-lg font-bold text-gray-800 mb-4">Add New Worker</h3>
+            <div className="bg-white dark:bg-gray-900 p-6 rounded-xl border border-gray-100 dark:border-gray-800 shadow-sm">
+              <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-4">Add New Worker</h3>
               <form onSubmit={handleAddWorker} className="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">Name</label>
-                  <input type="text" required value={newWorker.nama} onChange={e => setNewWorker({...newWorker, nama: e.target.value})} className="w-full p-2 border border-gray-200 rounded focus:border-primary focus:outline-none" />
+                  <label className="block text-xs font-medium text-gray-600 dark:text-gray-300 mb-1">Name</label>
+                  <input type="text" required value={newWorker.nama} onChange={e => setNewWorker({...newWorker, nama: e.target.value})} className="w-full p-2 border border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 rounded focus:border-primary focus:outline-none" />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">Email</label>
-                  <input type="email" required value={newWorker.email} onChange={e => setNewWorker({...newWorker, email: e.target.value})} className="w-full p-2 border border-gray-200 rounded focus:border-primary focus:outline-none" />
+                  <label className="block text-xs font-medium text-gray-600 dark:text-gray-300 mb-1">Email</label>
+                  <input type="email" required value={newWorker.email} onChange={e => setNewWorker({...newWorker, email: e.target.value})} className="w-full p-2 border border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 rounded focus:border-primary focus:outline-none" />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">Password</label>
-                  <input type="password" required value={newWorker.password} onChange={e => setNewWorker({...newWorker, password: e.target.value})} className="w-full p-2 border border-gray-200 rounded focus:border-primary focus:outline-none" />
+                  <label className="block text-xs font-medium text-gray-600 dark:text-gray-300 mb-1">Password</label>
+                  <input type="password" required value={newWorker.password} onChange={e => setNewWorker({...newWorker, password: e.target.value})} className="w-full p-2 border border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 rounded focus:border-primary focus:outline-none" />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">Role</label>
-                  <select value={newWorker.role} onChange={e => setNewWorker({...newWorker, role: e.target.value})} className="w-full p-2 border border-gray-200 rounded focus:border-primary focus:outline-none">
+                  <label className="block text-xs font-medium text-gray-600 dark:text-gray-300 mb-1">Role</label>
+                  <select value={newWorker.role} onChange={e => setNewWorker({...newWorker, role: e.target.value})} className="w-full p-2 border border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 rounded focus:border-primary focus:outline-none">
                     <option value="PELAYAN">PELAYAN</option>
                     <option value="KOKI">KOKI</option>
                     <option value="KASIR">KASIR</option>
@@ -343,10 +343,10 @@ export default function OwnerDashboard() {
               </form>
             </div>
 
-            <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+            <div className="bg-white dark:bg-gray-900 rounded-xl border border-gray-100 dark:border-gray-800 shadow-sm overflow-hidden">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="bg-gray-50 border-b border-gray-200 text-sm font-medium text-gray-600">
+                  <tr className="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-800 text-sm font-medium text-gray-600 dark:text-gray-300">
                     <th className="p-4">Name</th>
                     <th className="p-4">Email</th>
                     <th className="p-4">Role</th>
@@ -355,15 +355,15 @@ export default function OwnerDashboard() {
                 </thead>
                 <tbody>
                   {workers.map(w => (
-                    <tr key={w.id} className="border-b border-gray-100 hover:bg-gray-50">
-                      <td className="p-4 font-medium text-gray-900">{w.nama}</td>
-                      <td className="p-4 text-gray-500">{w.email}</td>
+                    <tr key={w.id} className="border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                      <td className="p-4 font-medium text-gray-900 dark:text-gray-100">{w.nama}</td>
+                      <td className="p-4 text-gray-500 dark:text-gray-400">{w.email}</td>
                       <td className="p-4">
                         {editingWorkerId === w.id ? (
-                          <select 
+                          <select
                             defaultValue={w.role}
                             onChange={(e) => handleEditWorkerRole(w.id, e.target.value)}
-                            className="p-1 border rounded text-sm"
+                            className="p-1 border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 rounded text-sm"
                           >
                             <option value="PELAYAN">PELAYAN</option>
                             <option value="KOKI">KOKI</option>
@@ -371,13 +371,13 @@ export default function OwnerDashboard() {
                             <option value="PEMILIK">PEMILIK</option>
                           </select>
                         ) : (
-                          <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded font-bold cursor-pointer" onClick={() => setEditingWorkerId(w.id)}>
+                          <span className="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs rounded font-bold cursor-pointer" onClick={() => setEditingWorkerId(w.id)}>
                             {w.role} ✎
                           </span>
                         )}
                       </td>
                       <td className="p-4 text-right space-x-2">
-                        <button onClick={() => handleDeleteWorker(w.id)} className="p-2 text-red-500 hover:bg-red-50 rounded"><Trash2 className="w-4 h-4" /></button>
+                        <button onClick={() => handleDeleteWorker(w.id)} className="p-2 text-red-500 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/40 rounded"><Trash2 className="w-4 h-4" /></button>
                       </td>
                     </tr>
                   ))}
@@ -393,28 +393,28 @@ export default function OwnerDashboard() {
             
             {/* Modals for CMS */}
             {showMenuModal && (
-              <div className="absolute inset-0 bg-white/90 z-10 flex items-center justify-center p-6 backdrop-blur-sm">
-                <div className="bg-white border border-gray-200 shadow-xl rounded-xl p-6 w-full max-w-md">
+              <div className="absolute inset-0 bg-white/90 dark:bg-gray-950/90 z-10 flex items-center justify-center p-6 backdrop-blur-sm">
+                <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-xl rounded-xl p-6 w-full max-w-md">
                   <div className="flex justify-between items-center mb-4">
-                    <h3 className="font-bold text-gray-800">Add New Menu</h3>
-                    <button onClick={() => setShowMenuModal(false)} className="text-gray-400 hover:text-gray-600"><X className="w-5 h-5"/></button>
+                    <h3 className="font-bold text-gray-800 dark:text-gray-100">Add New Menu</h3>
+                    <button onClick={() => setShowMenuModal(false)} className="text-gray-400 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"><X className="w-5 h-5"/></button>
                   </div>
                   <form onSubmit={handleAddMenu} className="space-y-4">
                     <div>
-                      <label className="block text-xs font-medium text-gray-600 mb-1">Name</label>
-                      <input required type="text" value={newMenu.nama} onChange={e => setNewMenu({...newMenu, nama: e.target.value})} className="w-full p-2 border rounded focus:border-primary focus:outline-none"/>
+                      <label className="block text-xs font-medium text-gray-600 dark:text-gray-300 mb-1">Name</label>
+                      <input required type="text" value={newMenu.nama} onChange={e => setNewMenu({...newMenu, nama: e.target.value})} className="w-full p-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 rounded focus:border-primary focus:outline-none"/>
                     </div>
                     <div>
-                      <label className="block text-xs font-medium text-gray-600 mb-1">Category</label>
-                      <select value={newMenu.kategori} onChange={e => setNewMenu({...newMenu, kategori: e.target.value})} className="w-full p-2 border rounded focus:border-primary focus:outline-none">
+                      <label className="block text-xs font-medium text-gray-600 dark:text-gray-300 mb-1">Category</label>
+                      <select value={newMenu.kategori} onChange={e => setNewMenu({...newMenu, kategori: e.target.value})} className="w-full p-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 rounded focus:border-primary focus:outline-none">
                         <option value="MAIN">Main Course</option>
                         <option value="APPETIZER">Appetizer</option>
                         <option value="DESSERT">Dessert / Beverage</option>
                       </select>
                     </div>
                     <div>
-                      <label className="block text-xs font-medium text-gray-600 mb-1">Price (Rp)</label>
-                      <input required type="number" value={newMenu.harga} onChange={e => setNewMenu({...newMenu, harga: e.target.value})} className="w-full p-2 border rounded focus:border-primary focus:outline-none"/>
+                      <label className="block text-xs font-medium text-gray-600 dark:text-gray-300 mb-1">Price (Rp)</label>
+                      <input required type="number" value={newMenu.harga} onChange={e => setNewMenu({...newMenu, harga: e.target.value})} className="w-full p-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 rounded focus:border-primary focus:outline-none"/>
                     </div>
                     <button type="submit" className="w-full p-2 bg-red-600 text-white rounded font-bold hover:bg-red-700">Save Menu</button>
                   </form>
@@ -423,30 +423,30 @@ export default function OwnerDashboard() {
             )}
 
             {showIngredientModal && (
-              <div className="absolute inset-0 bg-white/90 z-10 flex items-center justify-center p-6 backdrop-blur-sm">
-                <div className="bg-white border border-gray-200 shadow-xl rounded-xl p-6 w-full max-w-md">
+              <div className="absolute inset-0 bg-white/90 dark:bg-gray-950/90 z-10 flex items-center justify-center p-6 backdrop-blur-sm">
+                <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-xl rounded-xl p-6 w-full max-w-md">
                   <div className="flex justify-between items-center mb-4">
-                    <h3 className="font-bold text-gray-800">Add New Ingredient</h3>
-                    <button onClick={() => setShowIngredientModal(false)} className="text-gray-400 hover:text-gray-600"><X className="w-5 h-5"/></button>
+                    <h3 className="font-bold text-gray-800 dark:text-gray-100">Add New Ingredient</h3>
+                    <button onClick={() => setShowIngredientModal(false)} className="text-gray-400 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"><X className="w-5 h-5"/></button>
                   </div>
                   <form onSubmit={handleAddIngredient} className="space-y-4">
                     <div>
-                      <label className="block text-xs font-medium text-gray-600 mb-1">Name</label>
-                      <input required type="text" value={newIngredient.nama} onChange={e => setNewIngredient({...newIngredient, nama: e.target.value})} className="w-full p-2 border rounded focus:border-primary focus:outline-none"/>
+                      <label className="block text-xs font-medium text-gray-600 dark:text-gray-300 mb-1">Name</label>
+                      <input required type="text" value={newIngredient.nama} onChange={e => setNewIngredient({...newIngredient, nama: e.target.value})} className="w-full p-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 rounded focus:border-primary focus:outline-none"/>
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-xs font-medium text-gray-600 mb-1">Base Unit</label>
-                        <input required type="text" placeholder="e.g. gram, pcs" value={newIngredient.unit} onChange={e => setNewIngredient({...newIngredient, unit: e.target.value})} className="w-full p-2 border rounded focus:border-primary focus:outline-none"/>
+                        <label className="block text-xs font-medium text-gray-600 dark:text-gray-300 mb-1">Base Unit</label>
+                        <input required type="text" placeholder="e.g. gram, pcs" value={newIngredient.unit} onChange={e => setNewIngredient({...newIngredient, unit: e.target.value})} className="w-full p-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-500 rounded focus:border-primary focus:outline-none"/>
                       </div>
                       <div>
-                        <label className="block text-xs font-medium text-gray-600 mb-1">Min Stock</label>
-                        <input required type="number" value={newIngredient.stok_minimal} onChange={e => setNewIngredient({...newIngredient, stok_minimal: e.target.value})} className="w-full p-2 border rounded focus:border-primary focus:outline-none"/>
+                        <label className="block text-xs font-medium text-gray-600 dark:text-gray-300 mb-1">Min Stock</label>
+                        <input required type="number" value={newIngredient.stok_minimal} onChange={e => setNewIngredient({...newIngredient, stok_minimal: e.target.value})} className="w-full p-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 rounded focus:border-primary focus:outline-none"/>
                       </div>
                     </div>
                     <div>
-                      <label className="block text-xs font-medium text-gray-600 mb-1">Initial Stock</label>
-                      <input required type="number" value={newIngredient.stok} onChange={e => setNewIngredient({...newIngredient, stok: e.target.value})} className="w-full p-2 border rounded focus:border-primary focus:outline-none"/>
+                      <label className="block text-xs font-medium text-gray-600 dark:text-gray-300 mb-1">Initial Stock</label>
+                      <input required type="number" value={newIngredient.stok} onChange={e => setNewIngredient({...newIngredient, stok: e.target.value})} className="w-full p-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 rounded focus:border-primary focus:outline-none"/>
                     </div>
                     <button type="submit" className="w-full p-2 bg-red-600 text-white rounded font-bold hover:bg-red-700">Save Ingredient</button>
                   </form>
@@ -455,24 +455,24 @@ export default function OwnerDashboard() {
             )}
 
             {/* Menu Override */}
-            <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden flex flex-col max-h-[600px]">
-              <div className="p-4 bg-red-50 border-b border-red-100 flex justify-between items-center">
+            <div className="bg-white dark:bg-gray-900 rounded-xl border border-gray-100 dark:border-gray-800 shadow-sm overflow-hidden flex flex-col max-h-[600px]">
+              <div className="p-4 bg-red-50 dark:bg-red-900/40 border-b border-red-100 dark:border-red-800 flex justify-between items-center">
                 <div>
-                  <h3 className="font-bold text-red-800 flex items-center"><Power className="w-4 h-4 mr-2" /> Menu CMS</h3>
-                  <p className="text-xs text-red-600 mt-1">Force toggle status or add new menu</p>
+                  <h3 className="font-bold text-red-800 dark:text-red-400 flex items-center"><Power className="w-4 h-4 mr-2" /> Menu CMS</h3>
+                  <p className="text-xs text-red-600 dark:text-red-400 mt-1">Force toggle status or add new menu</p>
                 </div>
                 <button onClick={() => setShowMenuModal(true)} className="px-3 py-1 bg-red-600 text-white text-xs font-bold rounded flex items-center"><Plus className="w-3 h-3 mr-1"/> New</button>
               </div>
               <div className="overflow-y-auto p-4 space-y-2 flex-1">
-                {loading ? <p className="text-sm text-gray-400">Loading...</p> : menuItems.map(m => (
-                  <div key={m.id} className="flex justify-between items-center p-3 border border-gray-100 rounded hover:bg-gray-50">
+                {loading ? <p className="text-sm text-gray-400 dark:text-gray-400">Loading...</p> : menuItems.map(m => (
+                  <div key={m.id} className="flex justify-between items-center p-3 border border-gray-100 dark:border-gray-800 rounded hover:bg-gray-50 dark:hover:bg-gray-800/50">
                     <div>
-                      <p className="font-medium text-gray-800">{m.name}</p>
-                      <p className="text-xs text-gray-500">State: {m.active ? 'Active' : 'Disabled'} • Rp {m.price.toLocaleString('id-ID')}</p>
+                      <p className="font-medium text-gray-800 dark:text-gray-100">{m.name}</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">State: {m.active ? 'Active' : 'Disabled'} • Rp {m.price.toLocaleString('id-ID')}</p>
                     </div>
-                    <button 
+                    <button
                       onClick={() => toggleMenuManualStatus(m.id)}
-                      className={`px-3 py-1 text-xs font-bold rounded ${m.active ? 'bg-red-100 text-red-700 hover:bg-red-200' : 'bg-green-100 text-green-700 hover:bg-green-200'}`}
+                      className={`px-3 py-1 text-xs font-bold rounded ${m.active ? 'bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-400 hover:bg-red-200 dark:hover:bg-red-900/60' : 'bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-400 hover:bg-green-200 dark:hover:bg-green-900/60'}`}
                     >
                       {m.active ? 'DISABLE' : 'ENABLE'}
                     </button>
@@ -482,23 +482,23 @@ export default function OwnerDashboard() {
             </div>
 
             {/* Storage Override */}
-            <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden flex flex-col max-h-[600px]">
-              <div className="p-4 bg-red-50 border-b border-red-100 flex justify-between items-center">
+            <div className="bg-white dark:bg-gray-900 rounded-xl border border-gray-100 dark:border-gray-800 shadow-sm overflow-hidden flex flex-col max-h-[600px]">
+              <div className="p-4 bg-red-50 dark:bg-red-900/40 border-b border-red-100 dark:border-red-800 flex justify-between items-center">
                 <div>
-                  <h3 className="font-bold text-red-800 flex items-center"><Edit3 className="w-4 h-4 mr-2" /> Storage CMS</h3>
-                  <p className="text-xs text-red-600 mt-1">Force update stock values</p>
+                  <h3 className="font-bold text-red-800 dark:text-red-400 flex items-center"><Edit3 className="w-4 h-4 mr-2" /> Storage CMS</h3>
+                  <p className="text-xs text-red-600 dark:text-red-400 mt-1">Force update stock values</p>
                 </div>
                 <button onClick={() => setShowIngredientModal(true)} className="px-3 py-1 bg-red-600 text-white text-xs font-bold rounded flex items-center"><Plus className="w-3 h-3 mr-1"/> New</button>
               </div>
               <div className="overflow-y-auto p-4 space-y-2 flex-1">
-                {loading ? <p className="text-sm text-gray-400">Loading...</p> : ingredients.map(ing => (
-                  <div key={ing.id} className="flex justify-between items-center p-3 border border-gray-100 rounded hover:bg-gray-50">
+                {loading ? <p className="text-sm text-gray-400 dark:text-gray-400">Loading...</p> : ingredients.map(ing => (
+                  <div key={ing.id} className="flex justify-between items-center p-3 border border-gray-100 dark:border-gray-800 rounded hover:bg-gray-50 dark:hover:bg-gray-800/50">
                     <div>
-                      <p className="font-medium text-gray-800">{ing.name}</p>
-                      <p className="text-xs text-gray-500">Stock: {ing.stock} {ing.unit}</p>
+                      <p className="font-medium text-gray-800 dark:text-gray-100">{ing.name}</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">Stock: {ing.stock} {ing.unit}</p>
                     </div>
-                    <input 
-                      type="number" 
+                    <input
+                      type="number"
                       defaultValue={ing.stock}
                       onBlur={(e) => {
                         if(e.target.value !== String(ing.stock)) {
@@ -509,7 +509,7 @@ export default function OwnerDashboard() {
                            }
                         }
                       }}
-                      className="w-20 p-1 border border-red-200 rounded text-sm focus:border-red-500 focus:outline-none"
+                      className="w-20 p-1 border border-red-200 dark:border-red-800 dark:bg-gray-800 dark:text-gray-100 rounded text-sm focus:border-red-500 focus:outline-none"
                     />
                   </div>
                 ))}

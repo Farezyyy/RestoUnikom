@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 export default function MenuCard({ 
@@ -77,7 +78,10 @@ export default function MenuCard({
   // Landing variant
   return (
     <div className="glass-dark p-6 md:p-8 rounded-2xl space-y-4 hover:border-accent/50 transition-colors">
-      <h3 className="text-xl font-serif text-accent border-b border-white/10 pb-2">{title}</h3>
+      <div className="border-b border-white/10 pb-2">
+        <h3 className="text-xl font-serif text-accent">{title}</h3>
+        {subtitle && <p className="text-xs text-cream/50 uppercase tracking-widest mt-1 font-light">{subtitle}</p>}
+      </div>
       <div className="space-y-4">
         <div className="flex items-center gap-4">
           {appetizerImg && (

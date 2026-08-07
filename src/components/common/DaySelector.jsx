@@ -5,15 +5,15 @@ export const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Sa
 export default function DaySelector({ activeDay, setActiveDay, variant = 'public' }) {
   if (variant === 'staff') {
     return (
-      <div className="p-4 border-b border-gray-100 flex overflow-x-auto hide-scrollbar gap-2">
+      <div className="p-4 border-b border-gray-100 dark:border-gray-800 flex overflow-x-auto hide-scrollbar gap-2">
         {DAYS.map(day => (
           <button
             key={day}
             onClick={() => setActiveDay(day)}
             className={`px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-colors ${
-              activeDay === day 
-                ? 'bg-primary text-white shadow-md' 
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              activeDay === day
+                ? 'bg-primary text-white shadow-md'
+                : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
             }`}
           >
             {day}

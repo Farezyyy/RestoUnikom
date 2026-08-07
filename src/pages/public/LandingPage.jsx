@@ -7,6 +7,7 @@ import ReservationModal from '../../components/public/ReservationModal';
 import Footer from '../../components/public/Footer';
 import DaySelector from '../../components/common/DaySelector';
 import MenuCard from '../../components/common/MenuCard';
+import useWeeklyMenu, { toMenuCardProps } from '../../data/useWeeklyMenu';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -65,6 +66,7 @@ export default function LandingPage() {
   }, { scope: container });
 
   const [activeDay, setActiveDay] = useState('Monday');
+  const { week, loading } = useWeeklyMenu();
 
   return (
     <div ref={container} className="bg-dark text-cream min-h-screen font-sans selection:bg-secondary selection:text-cream overflow-x-hidden smooth-wrapper" data-speed="0.5">
@@ -148,26 +150,22 @@ export default function LandingPage() {
             <DaySelector activeDay={activeDay} setActiveDay={setActiveDay} variant="public" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <MenuCard
-              title="Menu A"
-              appetizer="Truffle Arancini with Saffron Aioli"
-              appetizerImg="https://images.unsplash.com/photo-1541529086526-db283c563270?q=80&w=400&auto=format&fit=crop"
-              mainCourse="Wagyu Beef Tenderloin & Pomme Purée"
-              mainCourseImg="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=400&auto=format&fit=crop"
-              dessert="Dark Chocolate Dome with Raspberry"
-              dessertImg="https://images.unsplash.com/photo-1579372786545-d24232daf58c?q=80&w=400&auto=format&fit=crop"
-            />
-            <MenuCard
-              title="Menu B"
-              appetizer="Scallop Carpaccio & Caviar"
-              appetizerImg="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?q=80&w=400&auto=format&fit=crop"
-              mainCourse="Pan-Seared Halibut with Beurre Blanc"
-              mainCourseImg="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=400&auto=format&fit=crop"
-              dessert="Lemon Yuzu Tart with Meringue"
-              dessertImg="https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=400&auto=format&fit=crop"
-            />
-          </div>
+          {loading ? (
+            <div className="text-center text-cream/60 py-12">Loading this week's menu...</div>
+          ) : !week ? (
+            <div className="text-center text-cream/60 py-12">Menu unavailable. Please check back soon.</div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              <MenuCard
+                title="Menu A"
+                {...toMenuCardProps(week[activeDay]?.A)}
+              />
+              <MenuCard
+                title="Menu B"
+                {...toMenuCardProps(week[activeDay]?.B)}
+              />
+            </div>
+          )}
         </div>
       </section>
 

@@ -4,6 +4,7 @@ import { LayoutDashboard, UtensilsCrossed, ClipboardList, BookOpen, Coffee, Cale
 import StaffLayout from '../../components/staff/StaffLayout';
 import WaiterDashboard from './WaiterDashboard';
 import ReservationBoard from '../../components/reservations/ReservationBoard';
+import ReservationDetail from '../admin/ReservationDetail';
 import OrderManagement from './OrderManagement';
 import ServiceWorkflow from './ServiceWorkflow';
 import MenuViewer from './MenuViewer';
@@ -24,6 +25,7 @@ export default function WaiterRoutes() {
       <Route element={<StaffLayout role="waiter" menuItems={menuItems} />}>
         <Route index element={<WaiterDashboard />} />
         <Route path="reservations" element={<ReservationBoard />} />
+        <Route path="reservations/:id" element={<ReservationDetail />} />
         <Route path="orders" element={<OrderManagement />} />
         <Route path="add-on" element={<AdditionalOrders />} />
         <Route path="service" element={<ServiceWorkflow />} />

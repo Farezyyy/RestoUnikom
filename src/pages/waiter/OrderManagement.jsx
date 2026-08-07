@@ -111,21 +111,21 @@ export default function OrderManagement() {
   return (
     <div className="flex flex-col lg:flex-row gap-6 h-[calc(100vh-8rem)]">
       {/* Menu Selection Area */}
-      <div className="flex-1 bg-white rounded-xl border border-gray-100 shadow-sm flex flex-col overflow-hidden">
-        <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50/50 flex-wrap gap-3">
+      <div className="flex-1 bg-white dark:bg-gray-900 rounded-xl border border-gray-100 dark:border-gray-800 shadow-sm flex flex-col overflow-hidden">
+        <div className="p-6 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center bg-gray-50/50 dark:bg-gray-800/50 flex-wrap gap-3">
           <div>
-            <h3 className="text-lg font-bold text-gray-800 flex items-center">
-              <Utensils className="w-5 h-5 mr-2 text-primary" /> Fine Dining Menu Selection
+            <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 flex items-center">
+              <Utensils className="w-5 h-5 mr-2 text-primary dark:text-accent" /> Fine Dining Menu Selection
             </h3>
-            <p className="text-xs text-gray-500 mt-0.5">Live database menus & active table ordering</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Live database menus & active table ordering</p>
           </div>
-          
+
           <div className="flex space-x-2">
             {['ALL', 'APPETIZER', 'MAIN_COURSE', 'DESSERT', 'BEVERAGE'].map(cat => (
-              <button 
+              <button
                 key={cat}
                 onClick={() => setActiveMenuCategory(cat)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors cursor-pointer ${activeMenuCategory === cat ? 'bg-primary text-white' : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'}`}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors cursor-pointer ${activeMenuCategory === cat ? 'bg-primary text-white' : 'bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50'}`}
               >
                 {cat.replace('_', ' ')}
               </button>
@@ -135,23 +135,23 @@ export default function OrderManagement() {
 
         <div className="flex-1 p-6 overflow-y-auto">
           {loading ? (
-            <div className="p-12 text-center text-gray-500 font-medium">Loading live menu items...</div>
+            <div className="p-12 text-center text-gray-500 dark:text-gray-400 font-medium">Loading live menu items...</div>
           ) : filteredMenus.length === 0 ? (
-            <div className="p-12 text-center text-gray-400 italic">No menu items found for category "{activeMenuCategory}".</div>
+            <div className="p-12 text-center text-gray-400 dark:text-gray-400 italic">No menu items found for category "{activeMenuCategory}".</div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {filteredMenus.map(menu => (
-                <div key={menu.id} className="p-4 border border-gray-200 rounded-xl hover:border-primary/50 transition-colors bg-white flex justify-between items-center shadow-sm">
+                <div key={menu.id} className="p-4 border border-gray-200 dark:border-gray-700 rounded-xl hover:border-primary/50 transition-colors bg-white dark:bg-gray-900 flex justify-between items-center shadow-sm">
                   <div>
-                    <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-gray-100 text-gray-600 tracking-wider">
+                    <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 tracking-wider">
                       {menu.kategori}
                     </span>
-                    <h4 className="font-bold text-gray-900 mt-1 text-base">{menu.nama}</h4>
-                    <p className="text-sm font-extrabold text-primary mt-0.5">Rp {Number(menu.harga).toLocaleString()}</p>
+                    <h4 className="font-bold text-gray-900 dark:text-gray-100 mt-1 text-base">{menu.nama}</h4>
+                    <p className="text-sm font-extrabold text-primary dark:text-accent mt-0.5">Rp {Number(menu.harga).toLocaleString()}</p>
                   </div>
-                  <button 
+                  <button
                     onClick={() => addCourseToOrder(menu)}
-                    className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-colors cursor-pointer shrink-0"
+                    className="w-10 h-10 rounded-full bg-primary/10 text-primary dark:text-accent flex items-center justify-center hover:bg-primary hover:text-white transition-colors cursor-pointer shrink-0"
                   >
                     <Plus className="w-5 h-5" />
                   </button>

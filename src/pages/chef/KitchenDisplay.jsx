@@ -117,26 +117,26 @@ export default function KitchenDisplay() {
   const readyCourses = activeCourses.filter(c => c.status === 'SIAP' || c.status === 'DISAJIKAN');
 
   const CourseCard = ({ course }) => (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 mb-4 flex flex-col space-y-3">
-      <div className="flex justify-between items-center pb-2 border-b border-gray-100">
+    <div className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-4 mb-4 flex flex-col space-y-3">
+      <div className="flex justify-between items-center pb-2 border-b border-gray-100 dark:border-gray-800">
         <div>
-          <span className="text-xl font-bold text-gray-800">Table {course.tableNo || '?'}</span>
-          <span className="text-xs text-gray-400 font-mono ml-2">Ord #{course.orderId}</span>
+          <span className="text-xl font-bold text-gray-800 dark:text-gray-100">Table {course.tableNo || '?'}</span>
+          <span className="text-xs text-gray-400 dark:text-gray-400 font-mono ml-2">Ord #{course.orderId}</span>
         </div>
       </div>
-      
+
       {/* Detailed Info Box */}
-      <div className="bg-gray-50 p-3 rounded-lg border border-gray-100 space-y-1.5 text-xs">
-        <p className="font-bold text-gray-900 text-sm flex items-center">
-          <User className="w-3.5 h-3.5 mr-1.5 text-primary" />
+      <div className="bg-gray-50 dark:bg-gray-800/50 p-3 rounded-lg border border-gray-100 dark:border-gray-800 space-y-1.5 text-xs">
+        <p className="font-bold text-gray-900 dark:text-gray-100 text-sm flex items-center">
+          <User className="w-3.5 h-3.5 mr-1.5 text-primary dark:text-accent" />
           {course.customerName}
         </p>
-        <div className="flex justify-between items-center text-gray-600 font-semibold pt-1 border-t border-gray-200/60">
+        <div className="flex justify-between items-center text-gray-600 dark:text-gray-300 font-semibold pt-1 border-t border-gray-200/60 dark:border-gray-700/60">
           <span className="flex items-center">
-            <Users className="w-3.5 h-3.5 mr-1 text-gray-500" />
-            Guests: <strong className="text-gray-900 ml-1">{course.guests} Pax</strong>
+            <Users className="w-3.5 h-3.5 mr-1 text-gray-500 dark:text-gray-400" />
+            Guests: <strong className="text-gray-900 dark:text-gray-100 ml-1">{course.guests} Pax</strong>
           </span>
-          <span className="bg-primary/10 text-primary px-2 py-0.5 rounded font-bold flex items-center">
+          <span className="bg-primary/10 text-primary dark:text-accent px-2 py-0.5 rounded font-bold flex items-center">
             <Utensils className="w-3 h-3 mr-1" />
             {course.pilihanMenu}
           </span>
@@ -144,10 +144,10 @@ export default function KitchenDisplay() {
       </div>
 
       <div className="pt-1">
-        <p className="font-bold text-primary text-base uppercase tracking-wide">{course.course.replace('_', ' ')}</p>
+        <p className="font-bold text-primary dark:text-accent text-base uppercase tracking-wide">{course.course.replace('_', ' ')}</p>
       </div>
 
-      <div className="mt-auto flex justify-end gap-2 pt-3 border-t border-gray-100">
+      <div className="mt-auto flex justify-end gap-2 pt-3 border-t border-gray-100 dark:border-gray-800">
         {course.status === 'MENUNGGU' && (
           <button 
             onClick={() => updateStatus(course.id, 'DIMASAK')}
@@ -165,12 +165,12 @@ export default function KitchenDisplay() {
           </button>
         )}
         {course.status === 'SIAP' && (
-          <div className="w-full py-3 bg-green-50 text-green-700 text-sm font-bold rounded-lg flex justify-center items-center border border-green-200">
+          <div className="w-full py-3 bg-green-50 dark:bg-green-900/40 text-green-700 dark:text-green-400 text-sm font-bold rounded-lg flex justify-center items-center border border-green-200 dark:border-green-800">
             <CheckCircle className="w-5 h-5 mr-2" /> WAITING FOR FLOOR
           </div>
         )}
         {course.status === 'DISAJIKAN' && (
-          <div className="w-full py-3 bg-gray-100 text-gray-500 text-sm font-bold rounded-lg flex justify-center items-center border border-gray-200">
+          <div className="w-full py-3 bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 text-sm font-bold rounded-lg flex justify-center items-center border border-gray-200 dark:border-gray-700">
             <CheckCircle className="w-5 h-5 mr-2" /> SERVED
           </div>
         )}
@@ -178,14 +178,14 @@ export default function KitchenDisplay() {
     </div>
   );
 
-  if (loading) return <div className="p-8 text-center text-gray-500">Loading Kitchen Display...</div>;
+  if (loading) return <div className="p-8 text-center text-gray-500 dark:text-gray-400">Loading Kitchen Display...</div>;
 
   return (
     <div className="h-[calc(100vh-8rem)] flex flex-col">
-      <div className="mb-6 flex justify-between items-center bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
+      <div className="mb-6 flex justify-between items-center bg-white dark:bg-gray-900 p-4 rounded-xl border border-gray-100 dark:border-gray-800 shadow-sm">
         <div>
-          <h2 className="text-2xl font-serif text-gray-800">Kitchen Display System</h2>
-          <p className="text-sm text-gray-500 mt-1">
+          <h2 className="text-2xl font-serif text-gray-800 dark:text-gray-100">Kitchen Display System</h2>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
             {activeJadwal 
               ? `Live Schedule: ${activeJadwal.sesi_makan?.nama} | Global Phase: ${globalPhase}`
               : 'No Active Schedule'}
@@ -194,8 +194,8 @@ export default function KitchenDisplay() {
       </div>
 
       {!activeJadwal || !COURSES.includes(globalPhase) ? (
-        <div className="flex-1 flex items-center justify-center bg-gray-50 rounded-xl border border-dashed border-gray-300">
-          <div className="text-center text-gray-500">
+        <div className="flex-1 flex items-center justify-center bg-gray-50 dark:bg-gray-950 rounded-xl border border-dashed border-gray-300 dark:border-gray-700">
+          <div className="text-center text-gray-500 dark:text-gray-400">
             <ChefHat className="w-16 h-16 mx-auto mb-4 opacity-50" />
             <h3 className="text-xl font-bold mb-2">Kitchen is Idle</h3>
             <p>Waiting for Maestro to advance to a Course phase.</p>
@@ -204,47 +204,47 @@ export default function KitchenDisplay() {
       ) : (
         <div className="flex-1 grid grid-cols-1 md:grid-cols-3 gap-6 overflow-hidden">
           {/* Column 1: Pending */}
-          <div className="bg-gray-50 rounded-xl p-4 flex flex-col h-full border border-gray-200">
+          <div className="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-4 flex flex-col h-full border border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-bold text-gray-700 flex items-center text-lg">
+              <h3 className="font-bold text-gray-700 dark:text-gray-300 flex items-center text-lg">
                 <span className="w-3 h-3 rounded-full bg-gray-400 mr-3"></span>
                 NEW TICKETS
               </h3>
-              <span className="bg-white text-gray-600 px-3 py-1 rounded-lg text-sm font-bold border border-gray-200 shadow-sm">{pendingCourses.length}</span>
+              <span className="bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-300 px-3 py-1 rounded-lg text-sm font-bold border border-gray-200 dark:border-gray-700 shadow-sm">{pendingCourses.length}</span>
             </div>
             <div className="flex-1 overflow-y-auto hide-scrollbar pr-2">
               {pendingCourses.map(course => <CourseCard key={course.id} course={course} />)}
-              {pendingCourses.length === 0 && <div className="text-center text-gray-400 mt-10 italic text-sm">No new tickets</div>}
+              {pendingCourses.length === 0 && <div className="text-center text-gray-400 dark:text-gray-400 mt-10 italic text-sm">No new tickets</div>}
             </div>
           </div>
 
           {/* Column 2: Preparing */}
-          <div className="bg-orange-50/50 rounded-xl p-4 flex flex-col h-full border border-orange-100">
+          <div className="bg-orange-50/50 dark:bg-orange-900/20 rounded-xl p-4 flex flex-col h-full border border-orange-100 dark:border-orange-800">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-bold text-orange-700 flex items-center text-lg">
+              <h3 className="font-bold text-orange-700 dark:text-orange-400 flex items-center text-lg">
                 <span className="w-3 h-3 rounded-full bg-orange-500 mr-3 animate-pulse"></span>
                 PREPARING
               </h3>
-              <span className="bg-white text-orange-600 px-3 py-1 rounded-lg text-sm font-bold border border-orange-200 shadow-sm">{preparingCourses.length}</span>
+              <span className="bg-white dark:bg-gray-900 text-orange-600 dark:text-orange-400 px-3 py-1 rounded-lg text-sm font-bold border border-orange-200 dark:border-orange-800 shadow-sm">{preparingCourses.length}</span>
             </div>
             <div className="flex-1 overflow-y-auto hide-scrollbar pr-2">
               {preparingCourses.map(course => <CourseCard key={course.id} course={course} />)}
-              {preparingCourses.length === 0 && <div className="text-center text-orange-400 mt-10 italic text-sm">Nothing currently cooking</div>}
+              {preparingCourses.length === 0 && <div className="text-center text-orange-400 dark:text-orange-500 mt-10 italic text-sm">Nothing currently cooking</div>}
             </div>
           </div>
 
           {/* Column 3: Ready */}
-          <div className="bg-green-50/50 rounded-xl p-4 flex flex-col h-full border border-green-100">
+          <div className="bg-green-50/50 dark:bg-green-900/20 rounded-xl p-4 flex flex-col h-full border border-green-100 dark:border-green-800">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-bold text-green-700 flex items-center text-lg">
+              <h3 className="font-bold text-green-700 dark:text-green-400 flex items-center text-lg">
                 <span className="w-3 h-3 rounded-full bg-green-500 mr-3"></span>
                 READY TO SERVE
               </h3>
-              <span className="bg-white text-green-600 px-3 py-1 rounded-lg text-sm font-bold border border-green-200 shadow-sm">{readyCourses.length}</span>
+              <span className="bg-white dark:bg-gray-900 text-green-600 dark:text-green-400 px-3 py-1 rounded-lg text-sm font-bold border border-green-200 dark:border-green-800 shadow-sm">{readyCourses.length}</span>
             </div>
             <div className="flex-1 overflow-y-auto hide-scrollbar pr-2">
               {readyCourses.map(course => <CourseCard key={course.id} course={course} />)}
-              {readyCourses.length === 0 && <div className="text-center text-green-400 mt-10 italic text-sm">No courses ready</div>}
+              {readyCourses.length === 0 && <div className="text-center text-green-400 dark:text-green-500 mt-10 italic text-sm">No courses ready</div>}
             </div>
           </div>
         </div>
